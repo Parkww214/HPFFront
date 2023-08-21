@@ -18,6 +18,7 @@ const Ingredient = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  opacity: ${({ already }) => (already ? '0.2' : '1')};
 
   svg {
     width: 4.725rem;
@@ -25,6 +26,7 @@ const Ingredient = styled.div`
     border: ${({ selected }) => (selected ? '3px solid #a5ce55' : 'none')};
     border-radius: 50%;
   }
+  transition: all 0.4s ease;
 `;
 
 export { Container, IngredientList, Ingredient };

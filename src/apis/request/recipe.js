@@ -11,7 +11,6 @@
 
 import { axios, axiosWithToken } from 'apis/api';
 import { API_PATH } from 'constants/path';
-import { MY_RECIPE } from 'constants/recipe';
 
 const getPopularRecipe = () => {
   return axios.get(API_PATH.POPULAR_RECIPE);
@@ -71,10 +70,7 @@ const requestGetPossibleRecipe = (ids) => {
 };
 
 const addReview = (recipe_id, data) => {
-  alert('리뷰 등록')
-  return axiosWithToken.post(
-    `${API_PATH.NEW_REVIEW}/${recipe_id}`,data,
-  );
+  return axiosWithToken.post(`${API_PATH.NEW_REVIEW}/${recipe_id}`, data);
 };
 
 const getMyRecipe = () => {
@@ -86,14 +82,12 @@ const getMyReview = () => {
 };
 
 const deleteMyReview = (id) => {
-  alert('삭제');
   return axiosWithToken.delete(`${API_PATH.DELETE_MYREVIEW}/${id}`);
 };
 
-
-const favoritRecipe = () => {
-  return axiosWithToken.get(`${API_PATH.FAVORITE_RECIPE}/&{id}`);
-}
+const favoritRecipe = (id) => {
+  return axiosWithToken.get(`${API_PATH.FAVORITE_RECIPE}/${id}`);
+};
 
 export {
   getPopularRecipe,
