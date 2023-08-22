@@ -54,7 +54,7 @@ const deleteDiet = (date, mealTime) => {
 };
 
 const getDetailRecipeReview = (id) => {
-  return axios.get(`${API_PATH.DETAIL_RECIPE_REVIEW}/${id}`);
+  return axios.post(`${API_PATH.DETAIL_RECIPE_REVIEW}/${id}`);
 };
 
 const addFavoriteRecipe = (id) => {
@@ -81,10 +81,8 @@ const getMyReview = () => {
   return axiosWithToken.get(`${API_PATH.MY_REVIEW}`);
 };
 
-const deleteMyReview = (id) => {
-  return axiosWithToken.post(`${API_PATH.DELETE_MYREVIEW}`, {
-    recipe_id: id
-  });
+const deleteMyReview = () => {
+  return axiosWithToken.post(`${API_PATH.DELETE_MYREVIEW}`);
 };
 
 const favoritRecipe = (id) => {

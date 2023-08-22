@@ -507,15 +507,18 @@ const recipeHandler = [
   }),
 
   rest.delete(
-    `${baseURL}${API_PATH.DELETE_MYREVIEW}/:recipe_id`,
+    `${baseURL}${API_PATH.DELETE_MYREVIEW}`,
     (req, res, ctx) => {
-      console.log(req.body);
+      const { review_id } = req.body;
       return res(
         ctx.status(200),
         ctx.json({
           isSuccess: true,
           code: 1000,
           message: '성공',
+          deleteReview: {
+            review_id: review_id,
+          },
         }),
       );
     },
