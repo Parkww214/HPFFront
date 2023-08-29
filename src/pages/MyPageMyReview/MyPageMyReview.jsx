@@ -34,12 +34,13 @@ function MyPageMyReview() {
       }).catch(e => handleError(e)))
     }
   }, [recipeIds]);
- 
-  const handleDeleteReview = (id) => {
-    deleteMyReview(id)
-      .then(() => {
+
+
+  const handleDeleteReview = (review_id) => {
+    deleteMyReview(review_id)
+      .then((response) => {
         alert('리뷰가 성공적으로 삭제되었습니다.');
-        setMyReviews(myReviews.filter((review) => review.recipe_id !== id));
+        setMyReviews((prevReviews) => prevReviews.filter((review) => review.recipe_id !== review_id));
       })
       .catch((e) => {
         handleError(e);
@@ -54,7 +55,7 @@ function MyPageMyReview() {
               <MyReviewBlock
                 key={`${idx}-review`}
                 review={review}
-                onDeleteReview={handleDeleteReview} 
+                onDeleteReview={() => handleDeleteReview(review.recipe_id)}
               />
             ))}
       </S.ReviewList>
